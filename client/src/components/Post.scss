@@ -1,0 +1,35 @@
+.Post {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+  &__Image {
+    border-radius: 5px;
+    img {
+      width: 100%;
+    }
+  }
+  &__Summary {
+    display: flex;
+    flex-direction: column;
+  }
+  &__Title {
+    font-size: 1.8rem;
+  }
+  &__Info {
+    color: #aa8;
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+  }
+  &__Author {
+    color: #333;
+    font-weight: bold;
+    text-decoration: inherit;
+  }
+  &__Description {
+    padding-top: 1rem;
+    line-height: 1.4rem;
+  }
+}
