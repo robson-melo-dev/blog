@@ -11,8 +11,10 @@ const Register = () => {
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
-    const jsonData = await res.JSON;
-    console.log(jsonData);
+    const jsonData = await res.json();
+    res.status === 200
+      ? alert("Registration successful!")
+      : alert("Registration Failed!");
   }
   return (
     <form className="Register" onSubmit={register}>
