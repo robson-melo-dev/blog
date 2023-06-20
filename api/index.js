@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const User = require("./models/User");
 const app = express();
@@ -10,16 +11,14 @@ const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
 
-const jwtSecret = "hjgajhhajsjdb*&8724kn";
+const jwtSecret = process.env.JWT_SECRET;
 const salt = bcrypt.genSaltSync(10);
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
-mongoose.connect(
-  "mongodb+srv://sysrobson:0ICwUZwnWWlxX73L@cluster0.iyzd3l1.mongodb.net/?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGODB_URL);
 
 //REGISTER ENDPOINT
 app.post("/register", async (req, res) => {
