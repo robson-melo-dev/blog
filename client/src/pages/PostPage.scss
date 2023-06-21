@@ -1,0 +1,38 @@
+.PostPage {
+  &__Title {
+    text-align: center;
+    margin: 10px 0 5px;
+  }
+  &__Date {
+    text-align: center;
+    display: block;
+    font-size: 0.7rem;
+    color: #aaa;
+  }
+  &__Author {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  &__Image {
+    display: flex;
+    max-height: 200px;
+
+    img {
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+    }
+  }
+
+  a {
+    color: #333;
+    text-decoration: underline;
+  }
+  &__Content {
+    p {
+      line-height: 1.6rem;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 .Post {
   margin: 1rem 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  //grid-template-columns: 1fr 1fr;
   gap: 1rem;
   align-items: center;
   &__Image {
@@ -31,5 +32,15 @@
   &__Description {
     padding-top: 1rem;
     line-height: 1.4rem;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Post {
+    grid-template-columns: 1fr 1fr;
   }
 }

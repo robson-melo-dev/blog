@@ -1,27 +1,31 @@
 import React from "react";
 import "./Post.scss";
+import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({ title, summary, cover, content, createdAt, author, _id }) => {
   return (
     <div className="Post">
-      <img
-        className="Post__Image"
-        src="https://files.tecnoblog.net/wp-content/uploads/2021/06/windows-11-microsoft-teams-340x191.jpg"
-        alt="Post image"
-      />
+      <Link to={`/post/${_id}`}>
+        <img
+          className="Post__Image"
+          src={"http://localhost:4000/" + cover}
+          alt="Post image"
+        />
+      </Link>
       <div className="Post__Summary">
-        <h2 className="Post__Title">Microsoft vai remover chat do Teams</h2>
+        <Link to={`/post/${_id}`}>
+          <h2 className="Post__Title">{title}</h2>
+        </Link>
         <p className="Post__Info">
           <a href="#" className="Post__Author">
-            Robson Melo
+            {author.username}
           </a>
-          <time className="Post__Date">15/05/2023 às 17:20</time>
+          <time className="Post__Date">
+            {format(new Date(createdAt), "dd/MM/yyyy HH:mm")}
+          </time>
         </p>
-        <p className="Post__Description">
-          Dificuldade de foco pode prejudicar a qualidade da imagem, resultando
-          em fotos embaçadas; veja como melhorar a nitidez ao fotografar e
-          filmar com a câmera do seu celular
-        </p>
+        <p className="Post__Description">{summary}</p>
       </div>
     </div>
   );

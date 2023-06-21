@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CreatePost.scss";
+import { Navigate } from "react-router-dom";
 
 const formats = [
   "header",
@@ -37,6 +38,7 @@ const CreatePost = () => {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   async function createNewPost(e) {
     e.preventDefault();
@@ -49,10 +51,15 @@ const CreatePost = () => {
     const res = await fetch("http://localhost:4000/post", {
       method: "POST",
       body: data,
+      credentials: "include",
     });
-    console.log(await res.json());
+
+    res.ok ? setRedirect(true) : setRedirect(false);
   }
 
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <form className="CreatePost" onSubmit={createNewPost}>
       <input
