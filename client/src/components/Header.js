@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Header.scss";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "./Context/UserContext";
 
 const Header = () => {
@@ -21,6 +21,7 @@ const Header = () => {
       method: "POST",
     });
     setUserInfo(null);
+    <Navigate to="/" />;
   }
 
   const username = userInfo?.username;
