@@ -1,29 +1,65 @@
+@import "../assets/colors";
+@import "../assets/fonts";
+@import "../assets/generalMixins";
+
 .PostPage {
-  &__Title {
+  position: relative;
+
+  &__Header {
+    display: flex;
+    justify-content: center;
+    background-color: $darkBlue;
     text-align: center;
-    margin: 10px 0 5px;
+    min-height: 25rem;
+  }
+
+  &__Container {
+    position: absolute;
+    top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: transparent;
+    padding: 0 10rem;
+  }
+
+  &__Title {
+    padding: 0 10rem;
+    text-align: center;
+    color: $white;
+    font-family: $IBMPlexSerif;
+    font-weight: 600;
+    font-size: 42px;
+  }
+  &__Image {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+
+    img {
+      width: 100%;
+      aspect-ratio: 25 / 9;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  &__Info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: $red;
   }
   &__Date {
     text-align: center;
     display: block;
     font-size: 0.7rem;
-    color: #aaa;
   }
   &__Author {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 0.7rem;
     font-weight: bold;
-  }
-  &__Image {
-    display: flex;
-    max-height: 200px;
-
-    img {
-      object-fit: cover;
-      object-position: center center;
-      width: 100%;
-    }
   }
 
   a {

@@ -1,6 +1,10 @@
+@import "./assets/colors";
+@import "./assets/fonts";
 .App {
-  padding: 1rem;
-  max-width: 1024px;
+  max-width: 1920px;
   margin: 0 auto;
-  color: #222;
+  background-color: $offWhite;
+  color: $almostBlack;
+  font-family: $Poppins;
+  font-weight: $regular;
 }

@@ -1,0 +1,27 @@
+@import "./colors";
+@import "./fonts";
+
+@mixin btnPrimary {
+  color: $red;
+  padding: 0.5rem 1rem;
+  font-family: $Poppins;
+  font-weight: $regular;
+  word-wrap: "break-word";
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@mixin btnSecondary {
+  background-color: transparent;
+  color: $red;
+  padding: 0.5rem 2rem;
+  font-family: $Poppins;
+  font-weight: $bold;
+  word-wrap: "break-word";
+  border: 1px solid $red;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}

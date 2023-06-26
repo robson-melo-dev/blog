@@ -1,9 +1,14 @@
+@import "../assets/colors";
+@import "../assets/fonts";
 .Header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  padding: 2rem;
+  min-height: 80px;
+  background: $white;
+  font-family: $NunitoSans;
+  filter: "blur(28px)";
   &__Logo {
     color: inherit;
     text-decoration: none;
