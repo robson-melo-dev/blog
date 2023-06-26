@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import "./Register.scss";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   async function register(e) {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/register", {
       method: "POST",
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ name, email, username, password }),
       headers: { "Content-Type": "application/json" },
     });
     const jsonData = await res.json();
@@ -19,6 +21,18 @@ const Register = () => {
   return (
     <form className="Register" onSubmit={register}>
       <h1>Register</h1>
+      <input
+        type="text"
+        placeholder="full name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        type="email"
+        placeholder="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
       <input
         type="text"
         placeholder="username"

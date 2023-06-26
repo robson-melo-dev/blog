@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./PostPage.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { UserContext } from "../components/Context/UserContext";
 
@@ -10,11 +10,15 @@ const PostPage = () => {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`).then((res) => {
-      res.json().then((postInfo) => {
-        setPostInfo(postInfo);
+    if (id) {
+      fetch(`http://localhost:4000/post/${id}`).then((res) => {
+        res.json().then((postInfo) => {
+          setPostInfo(postInfo);
+        });
       });
-    });
+    } else {
+      <Navigate to={"/"} />;
+    }
   }, []);
 
   if (!postInfo) return "";
@@ -26,7 +30,7 @@ const PostPage = () => {
         {format(new Date(postInfo.createdAt), "dd/MM/yyyy HH:mm")}
       </time>
       <div className="PostPage__Author">By: @{postInfo.author.username}</div>
-      {userInfo.id === postInfo.author._id && (
+      {userInfo?.id === postInfo.author._id && (
         <div className="PostPage__Edit">
           <Link to={`/edit/${postInfo._id}`} className="PostPage__Edit-btn">
             <svg

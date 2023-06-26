@@ -5,6 +5,7 @@ import { UserContext } from "./Context/UserContext";
 
 const Header = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const [redirect, setRedirect] = useState(false);
   useEffect(() => {
     fetch("http://localhost:4000/profile", {
       credentials: "include",
@@ -21,17 +22,21 @@ const Header = () => {
       method: "POST",
     });
     setUserInfo(null);
-    <Navigate to="/" />;
+    setRedirect(true);
   }
 
   const username = userInfo?.username;
+
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <header className="Header">
       <Link to="/" className="Header__Logo">
         Robson's Blog
       </Link>
       <nav className="Nav">
-        {username && (
+        {username && ( //only executes if there is an username
           <>
             <p className="Nav__Welcome">
               Welcome, <span className="Nav__User">{username}</span>
@@ -44,7 +49,7 @@ const Header = () => {
             </a>
           </>
         )}
-        {!username && (
+        {!username && ( //executes if there is no username
           <>
             <Link to="/login" className="Nav__Link">
               Login

@@ -24,9 +24,11 @@ mongoose.connect(process.env.MONGODB_URL);
 
 //REGISTER ENDPOINT
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { name, email, username, password } = req.body;
   try {
     const userDoc = await User.create({
+      name,
+      email,
       username,
       password: bcrypt.hashSync(password, salt),
     });
@@ -48,7 +50,9 @@ app.post("/login", async (req, res) => {
       res.cookie("token", token).json({
         id: userDoc._id,
         username,
-      }); //set the token to a JWT token and responds with the id and username
+        name: userDoc.name,
+        email: userDoc.email,
+      }); //set the token to a JWT token and responds with a cookie
     });
   } else {
     //login failed
