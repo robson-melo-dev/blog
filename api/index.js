@@ -49,7 +49,7 @@ app.post("/login", async (req, res) => {
       if (err) throw err;
       res.cookie("token", token).json({
         id: userDoc._id,
-        username,
+        username: userDoc.username,
         name: userDoc.name,
         email: userDoc.email,
       }); //set the token to a JWT token and responds with a cookie

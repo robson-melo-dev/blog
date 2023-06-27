@@ -28,7 +28,7 @@ const Header = () => {
   const username = userInfo?.username;
 
   if (redirect) {
-    return <Navigate to={"/"} />;
+    return window.location.replace("/");
   }
   return (
     <header className="Header">

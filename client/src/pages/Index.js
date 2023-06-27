@@ -50,7 +50,8 @@ const Index = () => {
         </p>
       </div>
       <div className="IndexPage__Posts">
-        {posts.length > 0 && posts.map((post) => <Post {...post} />)}
+        {posts.length > 0 &&
+          posts.map((post) => <Post key={post._id} {...post} />)}
       </div>
 
       <div className="ViewMore">

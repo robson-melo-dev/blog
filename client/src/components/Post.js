@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Post = ({ title, summary, cover, content, createdAt, author, _id }) => {
   return (
-    <div className="Post">
+    <div className="Post" key={_id}>
       <Link to={`/post/${_id}`}>
         <img
           className="Post__Image"
